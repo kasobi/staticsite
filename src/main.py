@@ -15,15 +15,13 @@ content_dir = "content"
 
 
 def main():
-    print(f"sys.argv is = {sys.argv}")
-    print(f"basepath = {basepath}")
     if os.path.exists(public_dir):
          shutil.rmtree(public_dir)
 
     r_static_to_private(static_dir, public_dir)
 
 
-    r_generate_pages(basepath, content_dir, 'template.html', public_dir)
+    r_generate_pages(basepath, content_dir, "template.html", public_dir)
 
 
 

@@ -24,8 +24,9 @@ def r_generate_pages(basepath, from_path, template_path, dest_path):
 
         new_page = template_content.replace("{{ Title }}", title)
         new_page = new_page.replace("{{ Content }}", html_from_origin)
-        new_page = new_page.replace('href="/', f'href={basepath}')
-        new_page = new_page.replace('src="/', f'href={basepath}')
+        if basepath != "/":
+            new_page = new_page.replace('href="/', f'href="{basepath}')
+            new_page = new_page.replace('src="/', f'src="{basepath}')
 
         dest_path = os.path.splitext(dest_path)[0] + ".html"
         os.makedirs(os.path.dirname(dest_path), exist_ok=True)
